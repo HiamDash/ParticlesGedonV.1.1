@@ -47,8 +47,4 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("SaveScore", HightScore);        
         }
     }
-    public void ResetScore()
-    {
-        _score = 0;
-    }
 }
