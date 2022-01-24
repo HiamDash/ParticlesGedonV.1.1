@@ -8,6 +8,7 @@ TagManager:
   - speedLet
   - speedCheck
   - letShake
+  - Enemy
   layers:
   - Default
   - TransparentFX
