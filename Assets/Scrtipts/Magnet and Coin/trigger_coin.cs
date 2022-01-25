@@ -31,7 +31,7 @@ public class trigger_coin : MonoBehaviour
         if (other.gameObject.CompareTag("coin"))
         {
              other.gameObject.SetActive(false);
-            coin_script.magnetActive = true;
+            //coin_script.magnetActive = true;
         }
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - speedLet
   - speedCheck
   - letShake
+  - coin
+  - magnet
   layers:
   - Default
   - TransparentFX
