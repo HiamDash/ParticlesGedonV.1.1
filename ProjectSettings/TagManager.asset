@@ -8,9 +8,7 @@ TagManager:
   - speedLet
   - speedCheck
   - letShake
-  - coin
-  - magnet
-  - shield
+  - Enemy
   layers:
   - Default
   - TransparentFX
