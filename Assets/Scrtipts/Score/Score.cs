@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    public static GameController instance; 
     public int _score, HightScore;
     public Text ScoreText, HightScoreText;
 
     void Awake()
     {
-        instance = this;
         if(PlayerPrefs.HasKey("SaveScore"))
         {
         HightScore = PlayerPrefs.GetInt("SaveScore");
@@ -28,8 +26,7 @@ public class Score : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            instance.AddScore();
-            //AddScore();
+            AddScore();
             HightScore ++;
             Destroy(other.gameObject);
         }
