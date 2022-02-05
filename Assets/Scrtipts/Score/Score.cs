@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
     public int _score, HightScore;
     public Text ScoreText, HightScoreText;
 
+    public GameObject ZombiSoliders;
+
     void Awake()
     {
         if(PlayerPrefs.HasKey("SaveScore"))
@@ -26,9 +28,13 @@ public class Score : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            
             AddScore();
             HightScore ++;
             Destroy(other.gameObject);
+            GameObject ZombiSolidersRef = (GameObject)Instantiate(ZombiSoliders);
+            ZombiSolidersRef.transform.position = new Vector3(transform.position.x, transform.position.y+5, transform.position.z);
+
         }
     }
     public void AddScore()
