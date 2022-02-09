@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class Score : MonoBehaviour
+{
+    public int _score, HightScore;
+    public Text ScoreText, HightScoreText;
+
+    public GameObject ZombiSoliders;
+
+    void Awake()
+    {
+        if(PlayerPrefs.HasKey("SaveScore"))
+        {
+        HightScore = PlayerPrefs.GetInt("SaveScore");
+        }
+    }
+    void Update()
+    {
+        ScoreText.text = ((int)_score).ToString();
+        HightScoreText.text = ((int)HightScore).ToString();
+    }
+     
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            
+            AddScore();
+            HightScore ++;
+            Destroy(other.gameObject);
+            GameObject ZombiSolidersRef = (GameObject)Instantiate(ZombiSoliders);
+            ZombiSolidersRef.transform.position = new Vector3(transform.position.x, transform.position.y+5, transform.position.z);
+
+        }
+    }
+    public void AddScore()
+    {
+        _score ++;
+        AddHightScore();
+    }
+    public void AddHightScore()
+    {
+        if(_score> HightScore)
+        {
+            HightScore= _score;
+            PlayerPrefs.SetInt("SaveScore", HightScore);        
+        }
+    }
+    public void ResetScore()
+    {
+        _score = 0;
+    }
+}

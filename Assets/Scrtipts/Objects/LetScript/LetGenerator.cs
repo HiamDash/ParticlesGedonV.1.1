@@ -17,13 +17,14 @@ public class LetGenerator : MonoBehaviour
    public GameObject[] Objects;
    private int random;
 
-    void Start()
-    {
+    // void Start()
+    // {
       
-      timeBetweenSpawn = Random.Range(tbsMin, tbsMax);
-    }
+   
+    // }
     void Update()
     {
+      timeBetweenSpawn = Random.Range(tbsMin, tbsMax);
       if(Time.time > spwanTime)
       {
         Spawn();

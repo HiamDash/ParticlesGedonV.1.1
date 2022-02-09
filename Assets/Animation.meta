@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Animation.meta
 guid: babc80213521c0d44b3aad67dd2339a2
+=======
+guid: 2a196cedf86a2534397779081ffa8dee
+>>>>>>> 7f1d485249d314bcb95b61938429a6042f3a734d:Assets/Prefabs/Objects/UnitedLet.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

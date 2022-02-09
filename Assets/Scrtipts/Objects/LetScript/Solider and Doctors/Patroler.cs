@@ -13,11 +13,13 @@ public class Patroler : MonoBehaviour
     bool chill = false;
     bool angry = false;
     bool goBack = false;
+    // public Animation anim; 
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        // anim = GetComponent<Animation>();
     }
 
 
@@ -25,8 +27,8 @@ public class Patroler : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
         {
-            chill = true;
-        }
+             chill = true;
+         }
         if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
         {
             angry = true;
@@ -43,23 +45,23 @@ public class Patroler : MonoBehaviour
 
         if (chill == true)
         {
-            Chill();
+             Chill();
 
         }
 
         else if (angry == true)
         {
-            Angry();
+             Angry();
 
-        }
-        else if (goBack == true)
-        {
-            GoBack();
-        }
+         }
+         else if (goBack == true)
+         {
+             GoBack();
+         }
 	}
 
-    void Chill()
-    {
+     void Chill()
+     {
         if (transform.position.x > point.position.x + positionOfPatrol)
         {
             MovingRight = true;
@@ -85,6 +87,12 @@ public class Patroler : MonoBehaviour
     void GoBack()
     {
         transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
-
     }
+    //  private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //      if (other.CompareTag("Player"))
+    //     {
+    //         anim.Play("infection");
+    //     }
+    // }
 }
