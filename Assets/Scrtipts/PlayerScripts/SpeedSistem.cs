@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class SpeedSistem : MonoBehaviour
 {
     public float moveSpeed;
+    public AudioSource PlayerAudioSource;
+    public AudioClip speedBoostAudioClip;
     
     Rigidbody2D rb;
     Collider2D myCollider;
@@ -26,11 +28,13 @@ public class SpeedSistem : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+        moveSpeed +=0.5F * Time.deltaTime;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("speedBoost"))
         {
+            PlayerAudioSource.PlayOneShot(speedBoostAudioClip);
             moveSpeed += 5;
             Destroy(other.gameObject);
         }
@@ -38,14 +42,16 @@ public class SpeedSistem : MonoBehaviour
         {
             GameObject explosionRef = (GameObject)Instantiate(explosion);
             explosionRef.transform.position = new Vector3(transform.position.x+5, transform.position.y+5, transform.position.z);
-            moveSpeed -= 5;
+            moveSpeed -= 15;
             Destroy(other.gameObject);
         }
         if (other.CompareTag("speedCheck"))
         {
-            if(moveSpeed >= 25)
+            if(moveSpeed >= 35)
             {
             Destroy(other.gameObject);
+            GameObject explosionRef = (GameObject)Instantiate(explosion);
+            explosionRef.transform.position = new Vector3(transform.position.x+5, transform.position.y+5, transform.position.z);
             }
             else
             {

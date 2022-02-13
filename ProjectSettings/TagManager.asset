@@ -12,6 +12,7 @@ TagManager:
   - magnet
   - shield
   - Enemy
+  - EnemySolider
   layers:
   - Default
   - TransparentFX

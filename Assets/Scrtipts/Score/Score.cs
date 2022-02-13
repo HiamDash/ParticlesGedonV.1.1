@@ -7,21 +7,24 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {
     public int _score, HightScore;
-    public Text ScoreText, HightScoreText;
+    public Text ScoreText;
 
+    public GameObject ZomdiDoctor;
     public GameObject ZombiSoliders;
+
+    public AudioSource PlayerAudioSource;
+    public AudioClip ZombiSoud;
 
     void Awake()
     {
         if(PlayerPrefs.HasKey("SaveScore"))
         {
-        HightScore = PlayerPrefs.GetInt("SaveScore");
+        HightScore = PlayerPrefs.GetInt("SaveScore", 0);
         }
     }
     void Update()
     {
         ScoreText.text = ((int)_score).ToString();
-        HightScoreText.text = ((int)HightScore).ToString();
     }
      
      private void OnTriggerEnter2D(Collider2D other)
@@ -30,18 +33,28 @@ public class Score : MonoBehaviour
         {
             
             AddScore();
-            HightScore ++;
+            Destroy(other.gameObject);
+            GameObject ZomdiDoctorRef = (GameObject)Instantiate(ZomdiDoctor);
+            ZomdiDoctorRef.transform.position = new Vector3(transform.position.x-1, transform.position.y+4, transform.position.z);
+            PlayerAudioSource.PlayOneShot(ZombiSoud);
+        }
+      
+        if (other.CompareTag("EnemySolider"))
+        {
+            AddScore();
             Destroy(other.gameObject);
             GameObject ZombiSolidersRef = (GameObject)Instantiate(ZombiSoliders);
-            ZombiSolidersRef.transform.position = new Vector3(transform.position.x, transform.position.y+5, transform.position.z);
-
+            ZombiSolidersRef.transform.position = new Vector3(transform.position.x-1, transform.position.y+4, transform.position.z);
+            PlayerAudioSource.PlayOneShot(ZombiSoud);
         }
     }
+   
     public void AddScore()
     {
         _score ++;
         AddHightScore();
     }
+
     public void AddHightScore()
     {
         if(_score> HightScore)
