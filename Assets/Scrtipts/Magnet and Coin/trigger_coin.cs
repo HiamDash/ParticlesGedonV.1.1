@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trigger_coin : MonoBehaviour
+/*public class trigger_coin : MonoBehaviour
 {
-    public float maTime = 10f;
+   *//* public float maTime = 10f;
     float timelEFT;
     void Start()
     {
@@ -33,5 +33,5 @@ public class trigger_coin : MonoBehaviour
              other.gameObject.SetActive(false);
             //coin_script.magnetActive = true;
         }
-    }
-}
+    }*//*
+}*/
